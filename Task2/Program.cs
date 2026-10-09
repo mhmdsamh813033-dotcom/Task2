@@ -1,5 +1,3 @@
-﻿using System.Diagnostics.Tracing;
-
 namespace Task2
 {
     internal class Program
