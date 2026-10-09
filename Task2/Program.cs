@@ -14,9 +14,13 @@ namespace Task2
                 Console.WriteLine(" Menu options : ");
                 Console.WriteLine("P - Print numbers ");
                 Console.WriteLine("A - Add a number");
-                Console.WriteLine("C - Clear the list"); //bouns
+                Console.WriteLine("F - Find a number");
+                Console.WriteLine("R - Remove a number");//bouns
+                Console.WriteLine("C - Clear the list"); 
                 Console.WriteLine("M - Display mean of the numbers");
                 Console.WriteLine("N - Display number of items");//bouns
+                Console.WriteLine("O - Count the odd numbers");//bouns
+                Console.WriteLine("E - Count the even numbers");//bouns
                 Console.WriteLine("S - Display the smallest number");
                 Console.WriteLine("L - Display the largest number");
                 Console.WriteLine("Q - Quit");
@@ -58,8 +62,37 @@ namespace Task2
                         Console.WriteLine("added ");
 
                         break;
+                   
+                    
+                    case "f"://found index of the number 
+                        Console.Write("Enter the number to find: ");
+                        int target = Convert.ToInt32(Console.ReadLine());
+                        bool found = false;
+                        for (int i = 0; i < numbers.Count; i++)
+                        {
+                            if (numbers[i] == target)
+                            {
+                                Console.WriteLine(target + " found at index " + i);
+                                found = true;
+                                break;
+                            }
+                        }
+                        if (!found)
+                            Console.WriteLine(target + " not found");
+                        break;
 
-                    case "c"://Clear the list & bouns
+
+                    case "r"://remove number of the list & bouns
+                        Console.Write("Enter the number to remove: ");
+                        int numToRemove = Convert.ToInt32(Console.ReadLine());
+                        if (numbers.Remove(numToRemove))
+                            Console.WriteLine(numToRemove + " removed");
+                        else
+                            Console.WriteLine(numToRemove + " not found");
+                        break;
+
+
+                    case "c"://Clear the list 
 
                         numbers.Clear();
                         Console.WriteLine("List cleared");
@@ -96,6 +129,33 @@ namespace Task2
                         }
 
                         break;
+
+
+                    case "o"://count the odd numbers & bouns
+                        List<int> odds = new List<int>();
+                         for(int i=0;i<numbers.Count;i++)
+                         {
+                             if(numbers[i]%2!=0)
+                                 {
+                                     odds.Add(numbers[i]);
+                                 }
+                         }
+                    Console.WriteLine("the count of odd numbers is  "+ odds.Count);
+                       break;
+
+
+                    case "e"://count the even numbers & bouns
+                        List<int> evens = new List<int>();
+                        for (int i = 0; i < numbers.Count; i++)
+                        {
+                            if (numbers[i] % 2 == 0)
+                            {
+                                evens.Add(numbers[i]);
+                            }
+                        }    
+                        Console.WriteLine("the count of even numbers is " + evens.Count);
+                        break;
+
 
                     case "s"://Display the smallest number
                         if (numbers.Count == 0)
